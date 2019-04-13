@@ -30,6 +30,7 @@ var (
 	texture  *sdl.Texture
 	timer    uint32
 	saveslot int
+	paused   bool
 )
 
 func main() {
@@ -124,6 +125,9 @@ func event() {
 				fmt.Println("Load State")
 			case sdl.K_r:
 				reset()
+			case sdl.K_p:
+				paused = !paused
+				fmt.Println("Paused:", paused)
 			case sdl.K_c:
 				// coin
 				si.port1 |= 1 << 0
@@ -189,7 +193,7 @@ func event() {
 }
 
 func update() {
-	if float64(sdl.GetTicks()-timer) > (1/float64(si.fps))*1000 {
+	if float64(sdl.GetTicks()-timer) > (1/float64(si.fps))*1000 && !paused {
 		si.Update()
 		si.render()
 		texture.Update(nil, si.fb.Pix, 4*256)
