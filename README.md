@@ -1,6 +1,6 @@
 # Space Invaders
 
-![Space Invaders](/screenshots/game.png?raw=true "Space Invaders creenshot")
+![Space Invaders](/screenshots/game.png?raw=true "Space Invaders screenshot")
 
 This was ported from
 https://github.com/superzazu/invaders
